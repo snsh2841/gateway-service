@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: authserviceMod
+          uri: "http://AUTH-SERVICE/"
+          predicates:
+            - Path=/auth-service/**
+    discovery:
+      enabled: true
+server:
+  port: 8085
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+      hostname: localhost
+  instance:
+    prefer-ip-address: true
